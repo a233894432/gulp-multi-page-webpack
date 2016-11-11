@@ -1,4 +1,5 @@
 var $ = require('jquery');
+var Router = require('core/router.js');
 
 var share = null;
 nie.use(["nie.util.shareV5"],function(){

@@ -1,11 +1,11 @@
-// 引入dioCSS框架
+// 引入dioCSS框架 css参考地http://getmobicss.com/
 @import "diocss/dio"; 
 
-@import "base/icon";
+/* 已设置 1rem = 5px , 其他 pxTorem(88px) 转换*/
 
-.logo{
-		background:url(../images/logo.png?__sprite) no-repeat;float: left;
-		a{
-			display:block;width:170px;height:32px;overflow:hidden;line-height: 50em;
-		}
-	}
+// 田田云 项目CSS
+@import 
+"base/icon",
+"customer/varables",
+"customer/customer";
+

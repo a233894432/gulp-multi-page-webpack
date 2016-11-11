@@ -39,8 +39,8 @@ var Sasspaths = {
 
 //mac chrome: "Google chrome", 
 var browser = os.platform() === 'linux' ? 'Google chrome' : (
-  os.platform() === 'darwin' ? 'Google chrome' : (
-  os.platform() === 'win32' ? 'chrome' : 'firefox'));
+    os.platform() === 'darwin' ? 'Google chrome' : (
+        os.platform() === 'win32' ? 'chrome' : 'firefox'));
 var pkg = require('./package.json');
 
 //将图片拷贝到目标目录
@@ -48,7 +48,7 @@ gulp.task('copy:images', function (done) {
     gulp.src(['src/images/**/*']).pipe(gulp.dest('dist/images')).on('end', done);
 });
 // 将字体文件复制到 目标目录
-gulp.task('copy:fonts',function(done){
+gulp.task('copy:fonts', function (done) {
     gulp.src(['src/css/fonts/*']).pipe(gulp.dest('dist/css/fonts')).on('end', done);
 });
 
@@ -64,21 +64,25 @@ gulp.task('lessmin', function (done) {
 });
 
 // 压缩合并 SCSS,
-gulp.task('sassmin',function(done){
+gulp.task('sassmin', function (done) {
     var cssSrc = Sasspaths.sass + '*.scss',
         cssSrca = Sasspaths.css, // 源码也输出一份
         cssdist = Sasspaths.dist + 'css/'
- gulp.src(cssSrc)
-        return sass(cssSrc, { style: 'expanded' })
-            // .pipe(gulp.dest(cssSrca))
-            .pipe(gulp.dest(cssdist))
-            .pipe(rename({ suffix: '.min' }))
-            .pipe(cssnano()) // 精简
-            // .pipe(gulp.dest(cssSrca))
-            .pipe(gulp.dest(cssdist))
-            .on('error', function(err) {
-                console.error('Error!', err.message)
-            })
+    gulp.src(cssSrc)
+    return sass(cssSrc, {
+            style: 'expanded'
+        })
+        // .pipe(gulp.dest(cssSrca))
+        .pipe(gulp.dest(cssdist))
+        .pipe(rename({
+            suffix: '.min'
+        }))
+        .pipe(cssnano()) // 精简
+        // .pipe(gulp.dest(cssSrca))
+        .pipe(gulp.dest(cssdist))
+        .on('error', function (err) {
+            console.error('Error!', err.message)
+        })
 
 
 });
@@ -105,13 +109,13 @@ gulp.task('md5:css', ['sprite'], function (done) {
 gulp.task('fileinclude', function (done) {
     gulp.src(['src/app/*.html'])
         .pipe(fileinclude({
-          prefix: '@@',
-          basepath: '@file'
+            prefix: '@@',
+            basepath: '@file'
         }))
         .pipe(gulp.dest('dist/app'))
         .pipe(connect.reload()) // 刷新浏览器
         .on('end', done);
-       
+
 });
 
 //雪碧图操作，应该先拷贝图片并压缩合并css
@@ -144,6 +148,13 @@ gulp.task('watch', function (done) {
         .on('end', done);
 });
 
+// 监听CSS 变化
+gulp.task('watch:css', function (done) {
+    gulp.watch('src/sass/**/*', ['sassmin', 'fileinclude'])
+        .on('end', done);
+});
+
+// 启动 本地浏览器
 gulp.task('connect', function () {
     console.log('connect------------');
     connect.server({
@@ -167,9 +178,9 @@ var myDevConfig = Object.create(webpackConfig);
 var devCompiler = webpack(myDevConfig);
 
 //引用webpack对js进行操作
-gulp.task("build-js", ['fileinclude'], function(callback) {
-    devCompiler.run(function(err, stats) {
-        if(err) throw new gutil.PluginError("webpack:build-js", err);
+gulp.task("build-js", ['fileinclude'], function (callback) {
+    devCompiler.run(function (err, stats) {
+        if (err) throw new gutil.PluginError("webpack:build-js", err);
         gutil.log("[webpack:build-js]", stats.toString({
             colors: true
         }));
@@ -182,3 +193,6 @@ gulp.task('default', ['connect', 'fileinclude', 'md5:css', 'md5:js', 'open']);
 
 //开发
 gulp.task('dev', ['connect', 'copy:images', 'fileinclude', 'sassmin', 'build-js', 'watch', 'open']);
+
+// 开发SASS 
+gulp.task('dev:css', ['connect', 'copy:images', 'fileinclude', 'sassmin', 'build-js', 'watch:css', 'open'])

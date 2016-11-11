@@ -2,7 +2,7 @@
   background-color: $color-background-container;
   max-width: $max-width-container - $width-gap-double;
   min-width: $min-width-container;
-  outline: $width-gap solid $color-background-container;
+  /*outline: $width-gap solid $color-background-container;*/  
   overflow: hidden;
   padding: $padding-container;
   width: 100%;

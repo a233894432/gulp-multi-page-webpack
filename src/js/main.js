@@ -2,6 +2,9 @@
 var $ = require('jquery');
 $.fn.slider = require('ui/slider.js');
 
+var Router = require('core/router.js');  //引入 router
+var router = new Router(); // new
+
 $(window).load(function() {
   var slider = $('.banner').slider({
     dots: true,
@@ -16,4 +19,8 @@ $(window).load(function() {
   });
 });
 
+
+router.addRoute('#/', function(req,next){
+    console.log("index.html")
+	});
 

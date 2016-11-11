@@ -1,5 +1,5 @@
 var Paging = require('ui/paging.js');
-
+var Router = require('core/router.js');
 var Page = new Paging({
     size: 10,    //页数
     current: 2,

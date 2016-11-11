@@ -24,7 +24,8 @@ html {
 
 html {
   // `rem` based on the `font-size` of html
-  font-size: $rem-base;
+  /*font-size: $rem-base;*/
+  font-size: 62.5%;
   // Changes the default tap highlight in iOS.
   -webkit-tap-highlight-color: $color-background-active;
   // Prevent adjustments of font size after orientation changes in IE and iOS.

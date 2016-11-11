@@ -108,11 +108,12 @@ $width-container-breakpoint: $max-width-container + $max-width-side + $width-scr
 //
 // Typography
 //
-
 // 1rem = 10px
 $rem-base: 10px !default;
 
-$font-size: 1.8rem !default;
+$browser-font-size:32px !default;
+// 默认字体是 16px
+$font-size: 1.6rem !default; 
 
 // h4, h5, h6 is not very useful, so we set them to the same size of normal
 // font-size, but with $font-weight-bold

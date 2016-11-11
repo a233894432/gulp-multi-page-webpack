@@ -1,7 +1,11 @@
 wx.ttyun.com 项目相关文章说明
 
-- 支持类似fis的`__inline`和`__sprite`语法（base64和雪碧图）(需要修改 依赖包`gulp-css-base64`和`gulp-css-spriter`都做了修改)
+
 - 支持保存刷新
+- 使用 sass
+- 支持 htm 与 html 嵌套
+- 使用 webpack 打包(暂时只用了js打包功能,分模块打包) 
+ 
 
 安装依赖包：
 `npm install`
@@ -11,12 +15,12 @@ wx.ttyun.com 项目相关文章说明
 开发：
 `gulp dev`
 
+开发SASS
+`dev:css`
+
 发布：
 `gulp`
 
- 
-
-项目说明
 
 开发目录:
 
@@ -45,3 +49,5 @@ wx.ttyun.com 项目相关文章说明
             └── main.js
  
 
+# PX to rem
+http://mxd.tencent.com/wp-content/uploads/2014/11/rem.html
