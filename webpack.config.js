@@ -34,10 +34,10 @@ module.exports = {
     },
     resolve: {
         alias: {
-            jquery: srcDir + "/js/lib/jquery.min.js",
-            core: srcDir + "/js/core",
-            ui: srcDir + "/js/ui",
-            news: srcDir + "/js/news"
+            jquery: srcDir + "/js/lib/jquery.min.js",  
+            core: srcDir + "/js/core", // 基础类
+            ui: srcDir + "/js/ui",    // UI 类
+            news: srcDir + "/js/news" // news module
         }
     },
     plugins: [

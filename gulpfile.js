@@ -72,7 +72,7 @@ gulp.task('fileinclude', function (done) {
           basepath: '@file'
         }))
         .pipe(gulp.dest('dist/app'))
-        .pipe(connect.reload())
+        .pipe(connect.reload()) // 刷新浏览器
         .on('end', done);
        
 });
