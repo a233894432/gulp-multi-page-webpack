@@ -22,8 +22,8 @@ wx.ttyun.com 项目相关文章说明
 
        src
         ├── app
-        │   ├── header.html // 头部文件
-        │   ├── foot.html   // 底部文件
+        │   ├── header.htm // 头部文件
+        │   ├── foot.htm   // 底部文件
         │   ├── index.html  // 首页 
         │   ├── news-detail.html // 各入口
         │   └── news-list.html
