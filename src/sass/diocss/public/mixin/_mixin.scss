@@ -1,0 +1,183 @@
+@mixin scroll-view() {
+  max-height: $max-height-scroll-view;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@mixin background-icon-angle-down() {
+  background: $background-image-angle-down right 8px center no-repeat;
+  background-size: 8px 8px;
+  padding-right: 25px;
+}
+
+@mixin flex-container() {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+@mixin flex-width($percentage) {
+  flex-basis: $percentage;
+  max-width: $percentage;
+}
+
+
+//
+// Forms
+//
+
+@mixin input-and-button() {
+  appearance: none;
+  background-color: $color-background-input;
+  border: $border-input;
+  border-radius: $border-radius-input;
+  // Follow the color of body text
+  color: $color-text-body;
+  font-family: $font-family;
+  font-size: $font-size;
+  padding: $padding-input;
+
+  &:focus {
+    border-color: $color-border-input-focus;
+  }
+}
+
+@mixin input-block() {
+  display: block;
+  line-height: $line-height-input;
+  margin: $width-gap 0 0;
+  width: 100%;
+}
+
+@mixin button() {
+  text-align: center;
+  background-color: $color-background-btn;
+  cursor: pointer;
+
+  &:hover,
+  &:active {
+    text-decoration: none;
+  }
+}
+
+@mixin disabled() {
+  cursor: default;
+  opacity: .5;
+  pointer-events: none;
+}
+
+@mixin btn() {
+  @include input-block();
+  @include input-and-button();
+  @include button();
+
+  &[disabled] {
+    @include disabled();
+  }
+}
+
+@mixin btn-primary() {
+  background-color: $color-background-btn-primary;
+  border-color: $color-background-btn-primary;
+  color: $color-text-btn-primary;
+
+  &[disabled] {
+    @include disabled();
+  }
+}
+
+@mixin btn-danger() {
+  color: $color-text-btn-danger;
+
+  &[disabled] {
+    @include disabled();
+  }
+}
+
+@function pxTorem($px){//$px为需要转换的字号
+    @return ($px / $browser-default-font-size) * 1rem;
+}
+
+@mixin font-size($target){
+    font-size: $target;
+    font-size: ($target / $browser-default-font-size) * 1rem;
+}
+
+
+
+
+//SCSS
+// .wrapper {
+//     @include remCalc(width,45);
+//     @include remCalc(margin,1,.5,2,3);
+// }
+// //CSS
+// .wrapper {
+//   width: 720px;
+//   width: 45rem;
+//   margin: 16px 8px 32px 48px;
+//   margin: 1rem 0.5rem 2rem 3rem; }
+
+@mixin remCalc($property, $values...) {
+  $max: length($values);//返回$values列表的长度值
+  $pxValues: '';
+  $remValues: '';
+
+  @for $i from 1 through $max {
+    $value: strip-units(nth($values, $i));//返回$values列表中的第$i个值，并将单位值去掉
+    $browser-default-font-size: strip-units($browser-default-font-size);
+    $pxValues: #{$pxValues + $value * $browser-default-font-size}px;
+
+    @if $i < $max {
+      $pxValues: #{$pxValues + " "};
+    }
+  } 
+
+  @for $i from 1 through $max {
+    $value: strip-units(nth($values, $i));
+    $remValues: #{$remValues + $value}rem;
+
+    @if $i < $max {
+      $remValues: #{$remValues + " "};
+    }
+  } 
+
+  #{$property}: $pxValues; 
+  #{$property}: $remValues; 
+}
+
+// icon
+@mixin icon{
+  font-family: "iconfont" !important;
+  font-size: $font-size;
+  //line-height: $line-height-bar;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.1px;
+  display: block;
+  //color: rgba(0,0,0,.5);
+}
+
+// 1px border-radius
+@mixin border-radius-1px($border-color: $color-border,$border-radius: $border-radius-base,$border-before-radius: $border-radius-lg){
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  @media screen and (-webkit-min-device-pixel-ratio: 2) {
+    position: relative;
+    border: 0;
+    &:before{
+      content:"";
+      width: 200%;
+      height: 200%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border: 1px solid $border-color;
+      -webkit-transform:scale(.5);
+      -webkit-transform-origin: 0 0;
+      padding: 1px;
+      -webkit-box-sizing: border-box;
+      border-radius: $border-before-radius;
+      pointer-events: none;
+    }
+  }
+}

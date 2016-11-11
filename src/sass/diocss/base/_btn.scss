@@ -1,0 +1,11 @@
+.btn {
+  @include btn();
+}
+
+.btn-primary {
+  @include btn-primary();
+}
+
+.btn-danger {
+  @include btn-danger();
+}

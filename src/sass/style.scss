@@ -1,0 +1,11 @@
+// 引入dioCSS框架
+@import "diocss/dio"; 
+
+@import "base/icon";
+
+.logo{
+		background:url(../images/logo.png?__sprite) no-repeat;float: left;
+		a{
+			display:block;width:170px;height:32px;overflow:hidden;line-height: 50em;
+		}
+	}

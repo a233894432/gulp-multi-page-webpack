@@ -1,12 +1,17 @@
 /**
- Gulpfile for gulp-webpack-demo
- created by fwon
+ Gulpfile for gulp-multi-page-package
+ created by diogoxiang
+ time: 2016年11月11日10:18:31
 */
 
 var gulp = require('gulp'),
     os = require('os'),
     gutil = require('gulp-util'),
     less = require('gulp-less'),
+    cssnano = require('gulp-cssnano'), // 获取 minify-css 模块（用于压缩 CSS）这个是最新的
+    sass = require('gulp-ruby-sass'), // 获取 gulp-ruby-sass 模块
+    sourcemaps = require('gulp-sourcemaps'), // map调试
+    rename = require('gulp-rename'), // 重命名
     concat = require('gulp-concat'),
     gulpOpen = require('gulp-open'),
     uglify = require('gulp-uglify'),
@@ -26,6 +31,12 @@ var host = {
     html: 'index.html'
 };
 
+var Sasspaths = {
+    css: 'src/css/',
+    sass: 'src/sass/',
+    dist: 'dist/'
+}
+
 //mac chrome: "Google chrome", 
 var browser = os.platform() === 'linux' ? 'Google chrome' : (
   os.platform() === 'darwin' ? 'Google chrome' : (
@@ -35,6 +46,10 @@ var pkg = require('./package.json');
 //将图片拷贝到目标目录
 gulp.task('copy:images', function (done) {
     gulp.src(['src/images/**/*']).pipe(gulp.dest('dist/images')).on('end', done);
+});
+// 将字体文件复制到 目标目录
+gulp.task('copy:fonts',function(done){
+    gulp.src(['src/css/fonts/*']).pipe(gulp.dest('dist/css/fonts')).on('end', done);
 });
 
 //压缩合并css, css中既有自己写的.less, 也有引入第三方库的.css
@@ -47,6 +62,28 @@ gulp.task('lessmin', function (done) {
         .pipe(gulp.dest('dist/css/'))
         .on('end', done);
 });
+
+// 压缩合并 SCSS,
+gulp.task('sassmin',function(done){
+    var cssSrc = Sasspaths.sass + '*.scss',
+        cssSrca = Sasspaths.css, // 源码也输出一份
+        cssdist = Sasspaths.dist + 'css/'
+ gulp.src(cssSrc)
+        return sass(cssSrc, { style: 'expanded' })
+            // .pipe(gulp.dest(cssSrca))
+            .pipe(gulp.dest(cssdist))
+            .pipe(rename({ suffix: '.min' }))
+            .pipe(cssnano()) // 精简
+            // .pipe(gulp.dest(cssSrca))
+            .pipe(gulp.dest(cssdist))
+            .on('error', function(err) {
+                console.error('Error!', err.message)
+            })
+
+
+});
+
+
 
 //将js加上10位md5,并修改html中的引用路径，该动作依赖build-js
 gulp.task('md5:js', ['build-js'], function (done) {
@@ -78,7 +115,7 @@ gulp.task('fileinclude', function (done) {
 });
 
 //雪碧图操作，应该先拷贝图片并压缩合并css
-gulp.task('sprite', ['copy:images', 'lessmin'], function (done) {
+gulp.task('sprite', ['copy:images', 'sassmin'], function (done) {
     var timestamp = +new Date();
     gulp.src('dist/css/style.min.css')
         .pipe(spriter({
@@ -94,15 +131,16 @@ gulp.task('sprite', ['copy:images', 'lessmin'], function (done) {
         .on('end', done);
 });
 
+// 清理目标目录
 gulp.task('clean', function (done) {
     gulp.src(['dist'])
         .pipe(clean())
         .on('end', done);
 });
 
+// 监听文件变化
 gulp.task('watch', function (done) {
-    gulp.watch('src/**/*', ['lessmin', 'build-js', 'fileinclude'])
-       
+    gulp.watch('src/**/*', ['sassmin', 'build-js', 'fileinclude'])
         .on('end', done);
 });
 
@@ -143,4 +181,4 @@ gulp.task("build-js", ['fileinclude'], function(callback) {
 gulp.task('default', ['connect', 'fileinclude', 'md5:css', 'md5:js', 'open']);
 
 //开发
-gulp.task('dev', ['connect', 'copy:images', 'fileinclude', 'lessmin', 'build-js', 'watch', 'open']);
+gulp.task('dev', ['connect', 'copy:images', 'fileinclude', 'sassmin', 'build-js', 'watch', 'open']);
