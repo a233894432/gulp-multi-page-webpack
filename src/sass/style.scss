@@ -1,11 +1,9 @@
 // 引入dioCSS框架 css参考地http://getmobicss.com/
-@import "diocss/dio"; 
+@import "diocss/dio";
 
-/* 已设置 1rem = 5px , 其他 pxTorem(88px) 转换*/
+/* 已设置 1rem = 10px , 其他 pxTorem(88px) 转换*/
 
 // 田田云 项目CSS
-@import 
-"base/icon",
+@import "base/icon",
 "customer/varables",
 "customer/customer";
-
