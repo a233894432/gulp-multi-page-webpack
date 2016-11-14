@@ -1,12 +1,9 @@
-<<<<<<< HEAD
-wx.ttyun.com 项目相关文章说明
-
-=======
+ 
 # 项目相关文章说明
 优先支持 移动端
 
 ## 已经完成功能：
->>>>>>> origin/ttyun
+ 
 - 支持保存刷新
 - 支持响应式开发，使用 sass 编译， 使用dio.css框架
 - 使用 webpack 打包(暂时只用了js打包功能,分模块打包) 
@@ -63,16 +60,8 @@ wx.ttyun.com 项目相关文章说明
             └── main.js
  
 
-<<<<<<< HEAD
-# PX to rem
-http://mxd.tencent.com/wp-content/uploads/2014/11/rem.html
-
-# 参考
-* [ PX to rem](http://mxd.tencent.com/wp-content/uploads/2014/11/rem.html)
-* [webpack 的 demos](http://zhizhi.betahouse.us/2015/09/27/yi-webpackde-demos/)
-=======
 ## 参考地址：
 - [PX to rem ](http://mxd.tencent.com/wp-content/uploads/2014/11/rem.html)
 - [Front end Frameworks](https://github.com/usablica/front-end-frameworks)
 - [web app变革之rem](https://isux.tencent.com/web-app-rem.html)
->>>>>>> origin/ttyun
+ 
