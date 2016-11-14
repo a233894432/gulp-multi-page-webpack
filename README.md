@@ -1,6 +1,5 @@
 wx.ttyun.com 项目相关文章说明
 
-
 - 支持保存刷新
 - 使用 sass
 - 支持 htm 与 html 嵌套
@@ -51,3 +50,7 @@ wx.ttyun.com 项目相关文章说明
 
 # PX to rem
 http://mxd.tencent.com/wp-content/uploads/2014/11/rem.html
+
+# 参考
+* [ PX to rem](http://mxd.tencent.com/wp-content/uploads/2014/11/rem.html)
+* [webpack 的 demos](http://zhizhi.betahouse.us/2015/09/27/yi-webpackde-demos/)
