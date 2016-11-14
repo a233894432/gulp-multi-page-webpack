@@ -1,11 +1,158 @@
 // 田田云 的CSS
-.site-box{
-    background: #ddd;
+body {
+    background: $color-eee;
 }
 
-.header{  
+.top-gap {
+    margin-top: pxTorem(20px);
+}
+.top-gap-14 {
+    margin-top: pxTorem(14px);
+}
+
+.right-gap{
+     margin-right: pxTorem(24px);
+}
+.prl-gap {
+    padding: 0 pxTorem(20px);
+}
+
+.pall-gap {
+    padding: pxTorem(20px) pxTorem(20px);
+}
+
+ol,
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+}
+/*base*/
+
+
+/*header-tab*/
+
+header {
     /*width:100px;*/
     height: pxTorem(88px);
-    font-size: pxTorem(28px);
+    font-size: pxTorem(32px);
     line-height: pxTorem(88px);
+    background: $white;
+    span {
+        height: pxTorem(87px);
+        display: inline-block;
+        padding: 0 pxTorem(2px);
+    }
+    span.on {
+        border-bottom: 3px solid $color-1;
+    }
+}
+
+
+/*section*/
+
+.site-box {
+    background: $white;
+    min-height: pxTorem(200px);
+}
+
+
+/*user-info*/
+.user-info{
+    min-width: 70%;
+    overflow: hidden;
+    /*width: 50%;*/
+}
+.u-name{
+    line-height: pxTorem(40px);
+    font-size: 1rem;
+    color: $color-txt-1; 
+}
+.u-time{
+    margin-top: pxTorem(8px);
+    font-size: pxTorem(24px);
+    line-height: 1rem;
+    color: $color-txt-9;
+}
+
+
+.u-from{
+     font-size: pxTorem(24px);
+    line-height: 1rem;
+    color: $color-txt-9;
+}
+/*u-readbox*/
+.u-readbox{
+    width: pxTorem(110px);
+    height: pxTorem(64px);
+    @include border-radius-1px(#ddd,0.2rem,0.4rem);
+    font-size: pxTorem(20px);
+    color: $color-txt-9;
+    .num{
+        margin-top:pxTorem(8px);
+       font-size: pxTorem(24px); 
+    }
+    p{
+        margin-top:pxTorem(5px);
+        text-align: center;
+        line-height: pxTorem(24px); 
+    }
+}
+
+/*avatar*/
+
+.u-avatar {
+    position: relative;
+    width: pxTorem(80px);
+    height: pxTorem(80px);
+    display: inline-block;
+    .u-avatar-pic {
+        display: block;
+        width: pxTorem(80px);
+        height: pxTorem(80px);
+        overflow: hidden;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .u-icon{
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: pxTorem(30px);
+        height: pxTorem(30px);
+        overflow: hidden;
+        img{
+            width: 100%;
+            vertical-align: top;
+        }
+        
+    }
+}
+
+/*content 内容详情*/
+.content-txt{
+    text-align:justify;
+    line-height: pxTorem(48px);
+    font-size: pxTorem(34px);
+}
+
+/* album*/
+.m-imgs {
+    text-align: center;
+    li {
+        display: inline-block;
+        list-style-type:none;
+        float: left;
+        margin:pxTorem(5px) pxTorem(4px);
+        img {
+            width: pxTorem(216px);
+            height: pxTorem(216px);
+        }
+    }
 }

@@ -45,7 +45,8 @@ var pkg = require('./package.json');
 
 //将图片拷贝到目标目录
 gulp.task('copy:images', function (done) {
-    gulp.src(['src/images/**/*']).pipe(gulp.dest('dist/images')).on('end', done);
+    gulp.src(['src/images/**/*']).pipe(gulp.dest('dist/images'));
+    gulp.src(['src/upload/**/*']).pipe(gulp.dest('dist/upload')).on('end', done);
 });
 // 将字体文件复制到 目标目录
 gulp.task('copy:fonts', function (done) {
