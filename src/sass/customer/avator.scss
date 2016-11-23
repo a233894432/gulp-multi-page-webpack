@@ -1,0 +1,71 @@
+/*avatar*/
+
+.u-avatar {
+    position: relative;
+    width: pxTorem(80px);
+    height: pxTorem(80px);
+    display: inline-block;
+    .u-avatar-pic {
+        display: block;
+        width: pxTorem(80px);
+        height: pxTorem(80px);
+        overflow: hidden;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .u-icon {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: pxTorem(30px);
+        height: pxTorem(30px);
+        overflow: hidden;
+        img {
+            width: 100%;
+            vertical-align: top;
+        }
+    }
+}
+
+.u-avatar-big {
+    position: relative;
+    width: pxTorem(100px);
+    height: pxTorem(100px);
+    display: inline-block;
+    .u-avatar-pic {
+        display: block;
+        width: pxTorem(100px);
+        height: pxTorem(100px);
+        overflow: hidden;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .u-icon {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: pxTorem(40px);
+        height: pxTorem(50px);
+        overflow: hidden;
+        img {
+            width: 100%;
+            vertical-align: middle;
+        }
+        i {
+            font-size: pxTorem(40px);
+            vertical-align: top;
+            /*-webkit-text-stroke: 1px white;*/
+            text-shadow: 1px 0 #fff, 0 1px #fff, 0 -2px #fff, -2px 0 #fff;
+        }
+    }
+}

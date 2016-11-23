@@ -2,25 +2,6 @@
 body {
     background: $color-eee;
 }
-
-.top-gap {
-    margin-top: pxTorem(20px);
-}
-.top-gap-14 {
-    margin-top: pxTorem(14px);
-}
-
-.right-gap{
-     margin-right: pxTorem(24px);
-}
-.prl-gap {
-    padding: 0 pxTorem(20px);
-}
-
-.pall-gap {
-    padding: pxTorem(20px) pxTorem(20px);
-}
-
 ol,
 ul {
     list-style: none;
@@ -29,10 +10,22 @@ ul {
 
 }
 /*base*/
+.icon-on {
+    color:$icon-on; 
+}
 
-
+.line-h{
+    width: 1px;
+    background: linear-gradient(#fff,#ddd,#fff);
+}
+.bg-white{
+    background: $white;
+}
+.clearfix{
+    @include clearfix();
+  
+}
 /*header-tab*/
-
 header {
     /*width:100px;*/
     height: pxTorem(88px);
@@ -42,16 +35,28 @@ header {
     span {
         height: pxTorem(87px);
         display: inline-block;
-        padding: 0 pxTorem(2px);
+        padding: 0 pxTorem(3px);
     }
     span.on {
-        border-bottom: 3px solid $color-1;
+        border-bottom: 3px solid $color-base;
+    }
+    a {
+        width:100%;
+        height:100%;
+        display:block;
+         &:active {
+            background: rgba($color: #000, $alpha: 0.2);
+        }
     }
 }
 
 
 /*section*/
 
+.container{
+    padding-left: pxTorem(24px);
+    padding-right: pxTorem(24px);
+}
 .site-box {
     background: $white;
     min-height: pxTorem(200px);
@@ -68,14 +73,24 @@ header {
     line-height: pxTorem(40px);
     font-size: 1rem;
     color: $color-txt-1; 
+      @include text-ellipsis(1);
+      span{
+            vertical-align: top;
+            margin-top: pxTorem(4px);
+      }
 }
 .u-time{
     margin-top: pxTorem(8px);
     font-size: pxTorem(24px);
     line-height: 1rem;
     color: $color-txt-9;
+      @include text-ellipsis(1);
 }
 
+.u-user-info{
+    max-width: 55%;
+    overflow: hidden;
+}
 
 .u-from{
      font-size: pxTorem(24px);
@@ -100,40 +115,6 @@ header {
     }
 }
 
-/*avatar*/
-
-.u-avatar {
-    position: relative;
-    width: pxTorem(80px);
-    height: pxTorem(80px);
-    display: inline-block;
-    .u-avatar-pic {
-        display: block;
-        width: pxTorem(80px);
-        height: pxTorem(80px);
-        overflow: hidden;
-        -webkit-border-radius: 50%;
-        -moz-border-radius: 50%;
-        border-radius: 50%;
-        img {
-            width: 100%;
-            height: 100%;
-        }
-    }
-    .u-icon{
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        width: pxTorem(30px);
-        height: pxTorem(30px);
-        overflow: hidden;
-        img{
-            width: 100%;
-            vertical-align: top;
-        }
-        
-    }
-}
 
 /*content 内容详情*/
 .content-txt{
@@ -142,9 +123,34 @@ header {
     font-size: pxTorem(34px);
 }
 
-/* album*/
+
+/*  
+
+
+单一图片规则:
+1\ 当宽度大于高度时，显示为横图，限高度384px 宽度顶边，两边各留24  
+2\ 当宽度小于高度时，显示为竖图，限高度544px，宽度自适应
+    图片裁切:
+     1\ 指定宽高，等比缩放
+
+两张图片规则:
+1\ 中间留个12px，两边各留24px
+2\ 高度为 336px
+     图片裁切:
+     1\ 指定宽高，居中裁剪  
+
+其他多图规则:
+1\ 单一尺寸 216*216px
+2\ 上下左右 各间隔 12px
+   图片裁切:
+    1\ 指定宽高，居中裁剪  
+
+*/
+
+/* album */
 .m-imgs {
     text-align: center;
+    overflow: hidden;
     li {
         display: inline-block;
         list-style-type:none;
@@ -152,7 +158,213 @@ header {
         margin:pxTorem(5px) pxTorem(4px);
         img {
             width: pxTorem(216px);
-            height: pxTorem(216px);
+            height: pxTorem(216px);  
+            overflow: hidden;
         }
+    }
+
+    li.two{
+        width: 49%;
+        height: pxTorem(336px);
+        margin: 0;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    li.two + li.two{
+        margin-left: pxTorem(10px);
+    }
+
+    li.oneA{
+        width: 100%;
+        margin: 0;
+        /*height: pxTorem(432px);*/
+        max-height: pxTorem(360px);
+        overflow: hidden;
+        img{
+            width: 100%;
+        }
+    }
+
+    li.oneB{
+        width: auto;
+        margin: 0;
+        max-height: pxTorem(550px);
+        img{
+            height: 100%;
+        }
+    }
+
+}
+
+/*m-address */
+.m-address {
+    margin: pxTorem(24px) 0 0 0;
+    font-size:  pxTorem(24px);
+    line-height:  pxTorem(32px);
+    color: $color-txt-9;
+    i{
+        font-size: pxTorem(18px);
+        width: pxTorem(18px);
+        height: pxTorem(18px);
+        margin-right: pxTorem(8px);
+    }
+}
+
+/*m-btn-gap*/
+.m-btn-gap {
+    margin-top: pxTorem(24px);
+    background: $bg-fafafa;
+    height: pxTorem(72px);
+    line-height: pxTorem(72px);
+    .unit {
+        font-size: pxTorem(28px);
+        color: $color-txt-9;
+        i {
+            font-size: pxTorem(32px);
+            margin-right: pxTorem(8px);
+            /*vertical-align: middle;*/
+        }
+        &:active {
+            background: rgba($color: #000, $alpha: 0.2);
+        }
+    }
+    /*.unit+.unit {
+        background: url(../images/line.png) left center no-repeat;
+        &:active {
+            background: rgba($color: #000, $alpha: 0.2);
+        }
+    }*/
+}
+
+/* m-question */
+.m-question{
+    height: pxTorem(64px);
+    line-height: pxTorem(64px);
+    font-size: pxTorem(32px);
+    i{
+        font-size: pxTorem(32px);
+        margin-right: pxTorem(16px);
+        vertical-align: middle;
+    }
+}
+
+/*quote 引用类型*/
+.m-quote {
+    background: $bg-fafafa;
+    height: pxTorem(144px);
+    overflow: hidden;
+    .m-quote-pic {
+        width: pxTorem(144px);
+        height: 100%;
+        background: $bg-eee;
+        overflow: hidden;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .m-quote-txt {
+        padding: pxTorem(12px) pxTorem(16px);
+        p{
+            margin-top: 0;
+            text-align: justify;
+            @include text-ellipsis(2);
+        }
+        .title {
+            font-size: pxTorem(32px);
+            line-height: pxTorem(40px);
+            margin-bottom: pxTorem(8px);
+            color:$color-txt-3;
+            @include text-ellipsis(1);
+
+        }
+        .note {
+            height: 100%;
+            vertical-align: middle; 
+           
+            font-size: pxTorem(28px);
+            color:$color-txt-9;
+            line-height: pxTorem(36px);
+            
+             display: table-cell;
+        }
+    }
+}
+
+/* m-bottom-bar */
+.m-bottom-bar{
+    background: rgba($color: $color-base, $alpha: 0.9);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    height: pxTorem(88px);
+    line-height: pxTorem(88px);
+    color: $white;
+    .sendpost{
+        width: pxTorem(168px);
+    }
+    .border{
+          &::after {
+              border-color: rgba($color: #000, $alpha: 0.2);
+          }
+    }
+    .btnActive{
+        &:active{
+            background: rgba($color:#000, $alpha: 0.2);
+        }
+    }
+}
+
+
+/* m-expert 
+    问专家模块
+*/
+.m-expert{
+    .m-tips{
+        /*height: pxTorem(36px);*/
+        line-height: pxTorem(36px);
+        font-size: pxTorem(28px);
+        padding-bottom: pxTorem(8px);
+    }
+
+    .u-expert-info{
+        min-height: pxTorem(144px);
+        float: left;
+        .u-name{
+            color: $color-txt-3;
+        }
+        .u-txt-info, .u-integral{
+            margin-top: pxTorem(8px);
+            font-size: pxTorem(28px);
+            line-height: pxTorem(32px);
+            color: $color-txt-9;
+              @include text-ellipsis(1);
+        }
+
+        .u-integral{
+            width: 80%;
+            margin-top: pxTorem(16px);
+            padding-bottom: pxTorem(24px);
+             @include text-ellipsis(1);
+
+        }
+    }
+
+    .u-toAction{
+        height: pxTorem(64px);
+        line-height: pxTorem(64px);
+        font-size:  pxTorem(28px);
+        color: $color-base;
+        width: pxTorem(144px);
+        margin-right: pxTorem(24px);
+        @include border-radius-1px($color-base,0.2rem,0.4rem);
+        &:active{
+            background: rgba($color: #000, $alpha: 0.2);
+        }
+
     }
 }

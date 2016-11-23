@@ -3,8 +3,24 @@
 
 /* 已设置 1rem = 10px , 其他 pxTorem(88px) 转换*/
 
+@import "base/mixin";
+
+ 
 // 田田云 项目CSS
-@import "base/icon",
-"customer/varables",
-"base/hairline",
+@import "base/icon",// icon
+"customer/varables", //一些定义
+"base/hairline", // 细线
+"base/mp",// padding ,margin
+"base/btn",// 按钮
+"base/badge", // 角标
+"customer/avator",//用户头像
 "customer/customer";
+
+
+/*dialog*/
+@import "base/animate",
+    "base/dialog";
+
+/*actionsheet*/
+@import "base/mask",
+    "base/actionsheet";

@@ -1,11 +1,9 @@
 var $ = require('jquery');
 
-var com = function() {
-
-    console.log('init---');
-
-    function init(e) {
-        return e;
+var com ={
+    init:function(){
+        console.log('init---');
     }
+    
 }
 module.exports = com;

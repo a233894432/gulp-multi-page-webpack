@@ -1,0 +1,39 @@
+
+.top-gap {
+    margin-top: pxTorem(20px);
+}
+.top-gap-14 {
+    margin-top: pxTorem(14px);
+}
+.top-gap-24{
+    margin-top: pxTorem(24px);
+}
+.top-gap-28{
+    margin-top: pxTorem(28px);
+}
+.right-gap{
+     margin-right: pxTorem(24px);
+}
+.ml-gap{
+    margin-left: pxTorem(24px);
+}
+.prl-gap {
+    padding: 0 pxTorem(24px);
+}
+.pt-gap {
+    padding-top: pxTorem(24px);
+}
+
+.pl-gap {
+    padding-left: pxTorem(24px);
+}
+.pr-gap {
+    padding-right: pxTorem(24px);
+}
+.pb-gap-0{
+    padding-bottom: 0;
+}
+
+.pall-gap {
+    padding: pxTorem(20px) pxTorem(20px) 0;
+}

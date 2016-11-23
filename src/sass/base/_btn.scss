@@ -1,0 +1,14 @@
+a {
+    color:$color-txt-3;
+    text-decoration: none;
+    &:active{
+        color:$color-txt-3;
+          text-decoration: none;
+    }
+    &:hover{
+          text-decoration: none;
+    }
+    &:visited{
+          text-decoration: none;
+    }
+}

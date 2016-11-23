@@ -1,0 +1,13 @@
+.u-label{
+    display: inline-block;
+    position: relative;
+    line-height: pxTorem(30px);
+    height: pxTorem(30px);
+    padding: 0 pxTorem(6px);
+    font-size: pxTorem(20px);
+  
+    @include border-radius-1px(#333,pxTorem(2px),pxTorem(4px));
+    &:active{
+        background-color: #f3f2f2;
+    }
+}

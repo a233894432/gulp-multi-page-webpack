@@ -1,11 +1,29 @@
 <!DOCTYPE html>
 <html>
-@@include('header.htm')
+  @@include('header.htm', {"linkArr": []})
+
 <body>
 <div>
     dnnnll
 </div>
 @@include('foot.htm')
+ 
+<script id="demo" type="text/html">
+<h1>{{ d.title }}</h1>
+<ul>
+{{# for(var i = 0, len = d.list.length; i < len; i++){ }}
+  <li>
+    <span>姓名：{{ d.list[i].name }}</span>
+    <span>城市：{{ d.list[i].city }}</span>
+  </li>
+{{# } }}
+</ul>
+</script>
+ 
+<div id="view"></div>
+
+ 
+
 
 <script src="../js/common.js"></script>
 <script src="../js/news-com.js"></script>

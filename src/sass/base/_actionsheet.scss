@@ -1,0 +1,43 @@
+.m-actionsheet {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    transform: translate(0, 100%);
+    backface-visibility: hidden;
+    z-index: 5000;
+    width: 100%;
+    background-color: $bg-eee;
+    //slide up animation
+    transition: transform .3s;
+}
+
+.m-actionsheet-menu{
+    background-color: #FFFFFF;
+}
+.m-actionsheet-action {
+    margin-top: 6px;
+    background-color: #FFFFFF;
+}
+.m-actionsheet-cell {
+    position: relative;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 18px;
+    &:before {
+        @include setTopLine(#ddd);
+    }
+    &:active{
+        background-color:$bg-fafafa;
+    }
+    &:first-child{
+        &:before{
+            display: none;
+        }
+    }
+}
+
+
+//actionSheet aniamtion
+.m-actionsheet-toggle{
+    transform: translate(0, 0);
+}
